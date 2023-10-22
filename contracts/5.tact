@@ -114,6 +114,8 @@ contract Task5 with Deployable {
 	}
 
 	receive(msg: WidthdrawBulk) {
+		require(sender() == myAddress(), "Invalid sender");
+
 		let i: Int = msg.from; 		
 		while (i < self.len) {
 			let nft: Address = self.nfts.get(i)!!;
